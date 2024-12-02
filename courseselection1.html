@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Selection Form</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+            max-width: 600px;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e2f0d9;
+            border-left: 5px solid #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">Course Selection Form</h1>
+        <form id="courseForm">
+            <div class="form-group">
+                <label for="studentName">Student Name:</label>
+                <input type="text" class="form-control" id="studentName" name="studentName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="collegeName">College Name:</label>
+                
+                <select class="form-control" id="course" name="course" required>
+                    <option value="">--Select a College--</option>
+                    <option value="math101">Massachusetts Institute of Technology (MIT)
+                    </option>
+                    <option value="cs101">University of Aberdeen
+                    </option>
+                    <option value="eng101">Yale University</option>
+                    <option value="phy101">Stanford University
+                    </option>
+                    <option value="math101">Harvard University
+                    </option>
+                    <option value="cs101">Darthmouth University
+                    </option>
+                    <option value="eng101">Columbia University</option>
+                    <option value="phy101">University of Toronto</option>
+                    <option value="math101">McGill University
+                    </option>
+                    <option value="cs101"> University of British Columbia</option>
+                    <option value="cs101">University of Alberta</option>
+                    <option value="cs101">University of Waterloo</option>
+                    <option value="cs101">Western University</option>
+                    <option value="cs101">Université de Montréal</option>
+                    '<option value="cs101">McMaster University</option>
+                    <option value="cs101">University of Ottawa</option>
+                    <option value="cs101">Queen's University at Kingston</option>
+                    <option value="cs101">London School of Economics and Political Science</option>
+                    <option value="cs101">University of St Andrews</option>'
+                    <option value="eng101" >Loughborough University</option>
+                    <option value="cs101">Durham University</option>'
+                    <option value="eng101" >UCL (University College London)</option>
+                    <option value="cs101">University of Warwick</option>'
+                    <option value="eng101" > University of Surrey</option>
+                    <option value="cs101">University of Birmingham</option>'
+                    <option value="eng101" >Johns Hopkins University</option>
+                    <option value="cs101">University of California, Los Angeles (UCLA)</option>'
+                    <option value="eng101" >New York University (NYU)</option>
+                    <option value="phy101">University of Chicago
+                    </option>
+                    <option value="phy101">Princeton University
+                    </option>
+                    <option value="phy101">University of Michigan-Ann Arbor
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="course">Select a Course:</label>
+                <select class="form-control" id="course" name="course" required>
+                    <option value="">--Select a Course--</option>
+                    <option value="math101">B.Tech in Computer Science and Engineering (CSE)
+                    </option>
+                    <option value="cs101">B.Tech in Aerospace Engineering (AE)
+                    </option>
+                    <option value="eng101">B.Tech in Biotechnology (BT)</option>
+                    <option value="phy101">B.Tech in Artificial Intelligence and Machine Learning (AI/ML)
+                    </option>
+                    <option value="math101">MS in Computer Science (MSCS)
+                    </option>
+                    <option value="cs101">MS in Data Science (MSDS)
+                    </option>
+                    <option value="eng101">MS in Biotechnology (MSBT)</option>
+                    <option value="phy101">MS in Physics (MSP)</option>
+                    <option value="math101">Ph.D. in Computer Science (Ph.D. in Computer Science)
+                    </option>
+                    <option value="cs101">Ph.D. in Biology (Ph.D. in Biology)</option>
+                    <option value="eng101" >Ph.D. in  Mathematics (Ph.D. in Mathematics)</option>
+                    <option value="phy101">Ph.D. in Engineering (Ph.D. in Engineering)
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="comments">Additional Comments:</label>
+                <textarea class="form-control" id="comments" name="comments" rows="4"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+
+        <div id="result" class="result" style="display: none;"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.getElementById('courseForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const studentName = document.getElementById('studentName').value;
+            const collegeName = document.getElementById('collegeName').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const address = document.getElementById('address').value;
+            const selectedCourse = document.getElementById('course').value;
+            const comments = document.getElementById('comments').value;
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = `
+                <h2>Submission Result</h2>
+                <p><strong>Name:</strong> ${studentName}</p>
+                <p><strong>College:</strong> ${collegeName}</p>
+                <p><strong>Phone Number:</strong> ${phoneNumber}</p>
+                <p><strong>Address:</strong> ${address}</p>
+                <p><strong>Course Selected:</strong> ${selectedCourse}</p>
+                <p><strong>Comments:</strong> ${comments}</p>
+            `;
+        });
+    </script>
+</body>
+</html>
